@@ -18,8 +18,7 @@ module.exports = {
                 ?,
                 ?,
                 ?,
-                ?
-            )`, 
+                ?)`, 
             [
                 data.last_name, 
                 data.first_name,
