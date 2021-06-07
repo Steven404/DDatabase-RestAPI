@@ -1,7 +1,7 @@
 const pool = require("../../config/database");
 
 module.exports = {
-    create: (data,callBack) => {
+    createUser: (data,callBack) => {
         pool.query(
             `INSERT INTO USERS(
                 username,
@@ -20,13 +20,48 @@ module.exports = {
                 data.password,
                 data.first_name,
                 data.last_name,
-
-            ], (error, results, fields) =>{
-                if (error) {
-                    return callBack(error)
+            ], (err, results, fields) => {
+                if (err){
+                    return callBack(err);
                 }
-                return callBack(null, results)
+                return callBack(null, results);
             }
         );
-    }
+    },
+    getUsers: callBack => {
+        pool.query(
+            `select * from users`,
+            [],
+            (err, results, fields) => {
+                if (err){
+                    return callBack(err);
+                }
+                return callBack (null, results);
+            }
+        );
+    },
+    getUserByUsername: (username, callBack) => {
+        pool.query(
+            `select * from users where username = ?`,
+            [username],
+            (err, results, fields) => {
+                if (err){
+                    return callBack(err);
+                }
+                return callBack (null, results[0]);
+            }
+        );
+    },
+    deleteUser: (data, callBack) => {
+        pool.query(
+            `delete from users where username =?`,
+            [data.username],
+            (err, results, fields) => {
+                if (err){
+                    return callBack(err);
+                }
+                return callBack(null, results);
+            }
+        );
+    },
 };
