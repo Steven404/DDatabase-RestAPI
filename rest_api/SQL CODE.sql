@@ -28,6 +28,8 @@ CREATE TABLE EMPLOYEES(
     email VARCHAR(30) NULL
 );
 
+UPDATE employees SET LastName = Μιχελάκης, FirstNAME = Στέφανος WHERE employees.ID = 1
+
 INSERT INTO `employees`(
     `ID`,
     `LastName`,
