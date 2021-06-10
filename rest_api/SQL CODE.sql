@@ -5,26 +5,41 @@ CREATE TABLE USERS(
     last_name VARCHAR(20)
 );
 
-INSERT INTO `users`(
-    `username`,
-    `PASSWORD`,
-    `first_name`,
-    `last_name`
+INSERT INTO employees(
+    ID,
+    LastName,
+    FirstNAME,
+    FatherName,
+    RecruitmentDate,
+    UntilDate,
+    AFM,
+    AMKA,
+    PhoneNo,
+    email
 )
 VALUES(
-    'ADMIN',
-    'ADMIN123',
+    NULL,
+    'Μιχελάκης',
     'Στέφανος',
-    'Μιχελάκης'
+    'Δημήτριος',
+    STR_TO_DATE('1-01-2021', '%d-%m-%Y'),
+    STR_TO_DATE('1-01-2022', '%d-%m-%Y'),
+    999999999,
+    99999999999,
+    9999999999,
+    NULL
 )
 
 CREATE TABLE EMPLOYEES(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     LastName VARCHAR(20) NOT NULL,
     FirstNAME VARCHAR(20) NOT NULL,
+    FatherName VARCHAR(20) NOT NULL,
+    RecruiteMentDate DATE NOT NULL,
+    UntillDate DATE NOT NULL,
     AFM VARCHAR(9) NOT NULL,
     AMKA VARCHAR(11) NOT NULL,
-    PhoneNo VARCHAR(10) NOT NULL,
+    PhoneNo VARCHAR(10) NULL,
     email VARCHAR(30) NULL
 );
 
