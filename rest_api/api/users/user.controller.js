@@ -67,7 +67,6 @@ module.exports = {
             }
             var hash = results.PASSWORD;
             const result = compareSync(body.password, hash);
-            console.log(result);
             if (result) {
                 if (body.username = 'MariaM90'){
                     results.password = undefined;
