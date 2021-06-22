@@ -11,7 +11,7 @@ module.exports = {
         createUser(body, (err, results) =>{
             if (err) {
                 console.log(err);
-                return res.status(500).send("Database error, check for duplicate entries");
+                return res.status(501).send("Database error, check for duplicate entries");
             }
             return res.status(200).json({
                 data: results

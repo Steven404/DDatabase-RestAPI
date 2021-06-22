@@ -1,8 +1,8 @@
 CREATE TABLE USERS(
-    username VARCHAR(30) PRIMARY KEY,
-    PASSWORD VARCHAR(20),
-    first_name VARCHAR(15),
-    last_name VARCHAR(20)
+    username VARCHAR(30) PRIMARY KEY NOT NULL,
+    PASSWORD VARCHAR(20) NOT NULL,
+    first_name VARCHAR(15) NOT NULL,
+    last_name VARCHAR(20) NOT NULL
 );
 
 INSERT INTO employees(
