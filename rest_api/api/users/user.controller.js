@@ -60,7 +60,7 @@ module.exports = {
         const body = req.body;
         getUserByUsername(body.username, (err, results) => {
             if (err){
-                console.log(err);
+                return res.status(405).send("Database error: Check if the database server is up and running");
             }
             if (!results){
                 return res.status(404).send("Invalid username/password combination");

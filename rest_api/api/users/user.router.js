@@ -6,7 +6,7 @@ router.post("/createUser", createUser);
 router.get("/getUsers", checkToken, getUsers);
 router.get("/getUser", checkToken, getUserByUsername);
 router.delete("/deleteUser", checkToken, deleteUser);
-router.post("/logIn", logIn);
+router.post("/login", logIn);
 
 
 
