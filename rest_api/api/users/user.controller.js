@@ -73,8 +73,7 @@ module.exports = {
                     const jsontoken = sign({data: body.username}, process.env.ENCRYPTION_KEY, {
                     expiresIn: "8h"
                 });
-                return res.json({
-                    success: 1,
+                return res.status(200).json({
                     token: jsontoken
                 });
                 } else{
@@ -83,7 +82,6 @@ module.exports = {
                         expiresIn: "8h"
                     });
                     return res.json({
-                        success: 1,
                         token: jsontoken
                     });
                 }

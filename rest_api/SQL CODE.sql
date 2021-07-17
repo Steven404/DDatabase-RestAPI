@@ -43,6 +43,10 @@ CREATE TABLE EMPLOYEES(
     email VARCHAR(30) NULL
 );
 
+ALTER table employees ADD COLUMN IBAN VARCHAR(34) NOT NULL AFTER email;
+
+ALTER TABLE employees ADD COLUMN restDays int(3) AFTER IBAN;
+
 UPDATE employees SET LastName = Μιχελάκης, FirstNAME = Στέφανος WHERE employees.ID = 1
 
 INSERT INTO `employees`(

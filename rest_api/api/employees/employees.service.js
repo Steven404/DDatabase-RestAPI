@@ -12,7 +12,9 @@ module.exports = {
                 AFM,
                 AMKA,
                 PhoneNo,
-                email
+                email,
+                IBAN,
+                restDays
             )
             VALUES(
                 NULL,
@@ -24,7 +26,9 @@ module.exports = {
                 ?,
                 ?,
                 ?,
-                ?
+                ?,
+                ?,
+                25
             )`,
             [
                 data.LastName,
@@ -35,7 +39,8 @@ module.exports = {
                 data.AFM,
                 data.AMKA,
                 data.PhoneNo,
-                data.email
+                data.email,
+                data.IBAN
             ], (err, results, fields) => {
                 if (err){
                     return callBack(err);
@@ -78,7 +83,8 @@ module.exports = {
             AFM = ?,
             AMKA = ?,
             PhoneNo = ?,
-            email = ?
+            email = ?,
+            IBAN = ?
             WHERE employees.ID = ?`,
             [
                 data.newLastName,
@@ -87,6 +93,23 @@ module.exports = {
                 data.newAMKA,
                 data.newPhoneNo,
                 data.newEmail,
+                data.IBAN,
+                data.ID
+            ], (err, results, fields) => {
+                if (err){
+                    return callBack(err);
+                }
+                return callBack (null, results);
+            }
+        );
+    },
+    updateEmployeeRestDays: (data, callBack) => {
+        pool.query(
+            `UPDATE employees 
+            SET restDays = ?
+            WHERE employees.ID = ?`,
+            [
+                data.newRestDays,
                 data.ID
             ], (err, results, fields) => {
                 if (err){

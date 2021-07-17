@@ -1,4 +1,4 @@
-const { createEmployee, getEmployees, getEmployee, updateEmployee, deleteEmployee } = require("./employees.service");
+const { createEmployee, getEmployees, getEmployee, updateEmployee, updateEmployeeRestDays, deleteEmployee } = require("./employees.service");
 const { sign } = require("jsonwebtoken");
 
 module.exports = {
@@ -37,6 +37,17 @@ module.exports = {
     updateEmployee: (req, res) => {
         const body = req.body;
         updateEmployee(body, (err, results) => {
+            if (err){
+                console.log(err);
+                return res.status(500).send("Database error, check for duplicate entries");
+            } else {
+                return res.send("Update successful!");
+            }
+        });
+    },
+    updateEmployeeRestDays: (req, res) => {
+        const body = req.body;
+        updateEmployeeRestDays(body, (err, results) => {
             if (err){
                 console.log(err);
                 return res.status(500).send("Database error, check for duplicate entries");
