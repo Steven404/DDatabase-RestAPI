@@ -8,7 +8,7 @@ CREATE TABLE USERS(
 INSERT INTO employees(
     ID,
     LastName,
-    FirstNAME,
+    FirstName,
     FatherName,
     RecruitmentDate,
     UntilDate,
@@ -33,17 +33,17 @@ VALUES(
 CREATE TABLE EMPLOYEES(
     ID INT PRIMARY KEY AUTO_INCREMENT,
     LastName VARCHAR(20) NOT NULL,
-    FirstNAME VARCHAR(20) NOT NULL,
+    FirstName VARCHAR(20) NOT NULL,
     FatherName VARCHAR(20) NOT NULL,
     RecruiteMentDate DATE NOT NULL,
-    UntillDate DATE NOT NULL,
+    UntilDate DATE NOT NULL,
     AFM VARCHAR(9) NOT NULL,
     AMKA VARCHAR(11) NOT NULL,
     PhoneNo VARCHAR(10) NULL,
     email VARCHAR(30) NULL
 );
 
-ALTER table employees ADD COLUMN IBAN VARCHAR(34) NOT NULL AFTER email;
+ALTER table employees ADD COLUMN IBAN VARCHAR(27) NOT NULL AFTER email;
 
 ALTER TABLE employees ADD COLUMN restDays int(3) AFTER IBAN;
 
