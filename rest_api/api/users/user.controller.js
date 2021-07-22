@@ -68,24 +68,16 @@ module.exports = {
             var hash = results.PASSWORD;
             const result = compareSync(body.password, hash);
             if (result) {
-                if (body.username = 'MariaM90'){
-                    results.password = undefined;
-                    const jsontoken = sign({data: body.username}, process.env.ENCRYPTION_KEY, {
+                results.password = undefined;
+                const jsontoken = sign({
+                    data: body.username,
+                    role: results.ROLE
+                }, process.env.ENCRYPTION_KEY, {
                     expiresIn: "8h"
                 });
-                return res.status(200).json({
+                return res.json({
                     token: jsontoken
                 });
-                } else{
-                    results.password = undefined;
-                    const jsontoken = sign({data: body.username}, process.env.ENCRYPTION_KEY, {
-                        expiresIn: "8h"
-                    });
-                    return res.json({
-                        token: jsontoken
-                    });
-                }
-                
             } else {
                 return res.status(400).send("Invalid username/password combination");
             }

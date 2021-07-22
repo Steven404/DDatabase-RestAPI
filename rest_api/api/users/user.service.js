@@ -7,13 +7,15 @@ module.exports = {
                 username,
                 PASSWORD,
                 first_name,
-                last_name
+                last_name,
+                ROLE
                 )
             VALUES(
                 ?,
                 ?,
                 ?,
-                ?
+                ?,
+                'BASIC'
             )`, 
             [
                 data.username, 

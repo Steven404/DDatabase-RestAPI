@@ -5,6 +5,8 @@ CREATE TABLE USERS(
     last_name VARCHAR(20) NOT NULL
 );
 
+ALTER TABLE users ADD COLUMN ROLE VARCHAR(5) AFTER last_name;
+
 INSERT INTO employees(
     ID,
     LastName,
@@ -35,7 +37,7 @@ CREATE TABLE EMPLOYEES(
     LastName VARCHAR(20) NOT NULL,
     FirstName VARCHAR(20) NOT NULL,
     FatherName VARCHAR(20) NOT NULL,
-    RecruiteMentDate DATE NOT NULL,
+    RecruitmentDate DATE NOT NULL,
     UntilDate DATE NOT NULL,
     AFM VARCHAR(9) NOT NULL,
     AMKA VARCHAR(11) NOT NULL,
