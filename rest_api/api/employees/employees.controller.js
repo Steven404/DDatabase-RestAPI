@@ -9,7 +9,7 @@ module.exports = {
                 console.log(err);
                 return res.status(500).send("Database error, check for duplicate entries");
             } else {
-                return res.send("Employee creation success");
+                return res.status(201).send("Employee creation success");
             }
         });
     },

@@ -1,6 +1,6 @@
 const { createUser, getUsers, getUserByUsername, deleteUser } = require("./user.service");
 
-const { genSaltSync, hashSync, compareSync, compare } = require("bcrypt");
+const { genSaltSync, hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
 module.exports = {
@@ -8,10 +8,13 @@ module.exports = {
         const body = req.body;
         const salt = genSaltSync(10);
         body.password = hashSync(body.password, salt);
+        if (body.username == 'ADMIN' || body.username == 'admin'){
+            return res.status(403).send("Username cannot be set to admin!");
+        }
         createUser(body, (err, results) =>{
             if (err) {
                 console.log(err);
-                return res.status(501).send("Database error, check for duplicate entries");
+                return res.status(500).send("Database error, check for duplicate entries");
             }
             return res.status(200).json({
                 data: results

@@ -13,10 +13,7 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/employees", employeesRouter);
 app.get('/api', (req,res)=>{
-    res.json({
-        success: 1,
-        message: "Successfully connected to the API"
-    });
+    res.status(200).send("Successfully connected to the API.")
 });
 
 app.listen(process.env.APP_PORT,()=>{

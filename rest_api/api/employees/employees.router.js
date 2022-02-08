@@ -7,6 +7,6 @@ router.get("/", checkToken, getEmployees);
 router.post("/getEmployee", checkToken, getEmployee);
 router.patch("/updateEmployee", checkToken, updateEmployee);
 router.patch("/updateEmployeeRestDays", checkToken, updateEmployeeRestDays);
-router.delete("/deleteEmployee", checkToken, deleteEmployee);
+router.delete("/deleteEmployee", checkAdmin, deleteEmployee);
 
 module.exports = router;

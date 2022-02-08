@@ -1,11 +1,25 @@
 CREATE TABLE USERS(
     username VARCHAR(30) PRIMARY KEY NOT NULL,
-    PASSWORD VARCHAR(20) NOT NULL,
+    PASSWORD VARCHAR(1000) NOT NULL,
     first_name VARCHAR(15) NOT NULL,
     last_name VARCHAR(20) NOT NULL
 );
 
 ALTER TABLE users ADD COLUMN ROLE VARCHAR(5) AFTER last_name;
+
+CREATE TABLE EMPLOYEES(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    LastName VARCHAR(20) NOT NULL,
+    FirstName VARCHAR(20) NOT NULL,
+    FatherName VARCHAR(20) NOT NULL,
+    RecruitmentDate DATE NOT NULL,
+    UntilDate DATE NOT NULL,
+    AFM VARCHAR(9) NOT NULL,
+    AMKA VARCHAR(11) NOT NULL,
+    PhoneNo VARCHAR(10) NULL,
+    email VARCHAR(30) NULL,
+    UNIQUE(email,AFM,AMKA,PhoneNo)
+);
 
 INSERT INTO employees(
     ID,
@@ -30,26 +44,13 @@ VALUES(
     99999999999,
     9999999999,
     NULL
-)
-
-CREATE TABLE EMPLOYEES(
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    LastName VARCHAR(20) NOT NULL,
-    FirstName VARCHAR(20) NOT NULL,
-    FatherName VARCHAR(20) NOT NULL,
-    RecruitmentDate DATE NOT NULL,
-    UntilDate DATE NOT NULL,
-    AFM VARCHAR(9) NOT NULL,
-    AMKA VARCHAR(11) NOT NULL,
-    PhoneNo VARCHAR(10) NULL,
-    email VARCHAR(30) NULL
 );
 
-ALTER table employees ADD COLUMN IBAN VARCHAR(27) NOT NULL AFTER email;
+ALTER table employees ADD COLUMN IBAN VARCHAR(27) AFTER email;
 
 ALTER TABLE employees ADD COLUMN restDays int(3) AFTER IBAN;
 
-UPDATE employees SET LastName = Μιχελάκης, FirstNAME = Στέφανος WHERE employees.ID = 1
+ALTER TABLE employees ADD UNIQUE(IBAN);
 
 INSERT INTO `employees`(
     `ID`,
@@ -69,3 +70,5 @@ VALUES(
     '9999999999',
     'stmiche@teiemt.gr'
 );
+
+UPDATE `employees` SET `LastName` = 'Μιχελάκης', `FirstNAME` = 'Στέφανος' WHERE employees.ID = 1;

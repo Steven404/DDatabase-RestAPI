@@ -50,6 +50,7 @@ module.exports = {
                 if (err){
                     return callBack(err);
                 }
+                console.log(results[0]);
                 return callBack (null, results[0]);
             }
         );
